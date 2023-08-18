@@ -26,21 +26,36 @@ const batch = [valid1, valid2, valid3, valid4, valid5, invalid1, invalid2, inval
 // My your functions below:
  
 const validateCred = arr => {
-    arr.reverse();
-    
-
-    if number is valid 
-    /*
-    from last to first (reverse() )
-    double the value, of every other number if its more than nine, subtract 9 from it
-    add all the values
-    if the sum is divisible by 10, the number is valid
-
-    */
-    return true 
-    else return false 
-} 
-
-
-
-
+    //console.log(arr)
+    let sum = 0;
+    let multiplySum = 0;
+    let i = 0;
+    arr.reverse(); // 1. reverse the array
+    //console.log(arr)
+    if (i < arr.length) {
+        //console.log(arr.length)
+    for (let number of arr) {
+    if (i % 2 !== 0) { 
+        multiplySum = arr[i] * 2 // 2. double every other number 
+        //console.log(multiplySum)
+     }else { 
+        sum += arr[i];
+        i++
+        continue
+    }
+    if (multiplySum > 9) { // 3. subtract 9 from numbers over 9
+       sum += multiplySum - 9 ;
+       //console.log (sum)
+    } else {
+        sum += multiplySum;
+    }
+    i++
+    } //console.log(sum) 
+    if (sum % 10 === 0){//4. if sum can be divided by 10 = true else false 
+        return true;
+    } else {
+        return false;
+    }
+}
+}
+//console.log(validateCred(valid1))
