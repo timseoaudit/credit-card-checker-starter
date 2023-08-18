@@ -23,11 +23,23 @@ const mystery5 = [4, 9, 1, 3, 5, 4, 0, 4, 6, 3, 0, 7, 2, 5, 2, 3]
 const batch = [valid1, valid2, valid3, valid4, valid5, invalid1, invalid2, invalid3, invalid4, invalid5, mystery1, mystery2, mystery3, mystery4, mystery5]
 
 
-// Add your functions below:
+// My your functions below:
+ 
+const validateCred = arr => {
+    arr.reverse();
+    
 
+    if number is valid 
+    /*
+    from last to first (reverse() )
+    double the value, of every other number if its more than nine, subtract 9 from it
+    add all the values
+    if the sum is divisible by 10, the number is valid
 
-
-
+    */
+    return true 
+    else return false 
+} 
 
 
 
