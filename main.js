@@ -58,17 +58,54 @@ const validateCred = arr => {
 }
 }
 
-
+let invalidOnes = []; // for saving of the invalid arrays 
 //findIvalidCards
 const findInvalidCards = arr => { // creating function to loop trough the batch arrays
-    let invalidOnes = []; // for saving of the invalid arrays 
+    
     for (let i = 0; i < arr.length; i++) { // loop trough the arrays 
       if (validateCred(arr[i]) === false) {// call the validateCread and use it to find out if No is valid or not 
         invalidOnes.push(arr[i]); // push invalid numbers into our invalidOnes 
       }
     }
-    return invalidOnes.map(nestedArr => nestedArr.reverse()); // return the invalid numbers, reverse the numbers as they where returned the wrong way around.
+    invalidOnes = invalidOnes.map(nestedArr => nestedArr.reverse());
+    return invalidOnes // return the invalid numbers, reverse the numbers as they where returned the wrong way around.
 }
 
+//Identification of Companies
+const idInvalidCardCompanies = arr => { // define function to Identify Companies with invalid Creditcard numbers
+    companies = []; // value that save the array with the invalid companies 
+    for (let card of arr) { // looping trough the array of invalid numbers
+      if (card[0] === 3) { // if it starts with a 3 the following happens 
+        if (companies.includes('Amex')) {
+          continue;
+        } else { // if not it will add companie name to the 'companies' array 
+          companies.push('Amex');
+        }
+      } else if (card[0] === 4) {
+        if (companies.includes('Visa')) {
+          continue;
+        } else {
+          companies.push('Visa');
+        }
+      } else if (card[0] === 5) {
+        if (companies.includes('Mastercard')) {
+          continue;
+        } else {
+          companies.push('Mastercard');
+        }
+      } else if (card[0] === 6) {
+        if (companies.includes('Discover')) {
+          continue;
+        } else {
+          companies.push('Discover');
+        }
+      } else {
+        return "Company not found"; // if non of the numbers are in there it will return the string.
+      }
+    }
+    return companies; // retrun a finished array 
+  }
+findInvalidCards(batch) // IMPORTANT! needs to run before idInvalidCardCimpanies otherwise idInvalidCardCompanies does not work 
 //console.log(validateCred(mystery5))
-//console.log(findInvalidCards(batch))
+//console.log()
+console.log(idInvalidCardCompanies(invalidOnes));
